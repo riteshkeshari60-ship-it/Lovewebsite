@@ -1,3 +1,5 @@
+const WEB_APP_URL =https://script.google.com/macros/s/AKfycbyZePZLw3m-ZjAftGGIgM5zlP3DZmZAo7TI_ELIk-b7LJbGLLedKuE3Yd97hWFXr15C/exec
+
 function startLove() {
     document.getElementById("questions").classList.remove("hidden");
 
@@ -6,36 +8,41 @@ function startLove() {
     });
 }
 
-function submitAnswers() {
-    let name = document.getElementById("girlName").value.trim();
-    let happiness = document.getElementById("happiness").value;
-    let future = document.getElementById("future").value;
-    let message = document.getElementById("message").value.trim();
+async function submitAnswers() {
+    const name = document.getElementById("girlName").value.trim();
+    const happiness = document.getElementById("happiness").value;
+    const future = document.getElementById("future").value;
+    const message = document.getElementById("message").value.trim();
 
-    if (name === "" || happiness === "" || future === "") {
+    if (!name || !happiness || !future) {
         alert("Please fill all required answers ❤️");
         return;
     }
 
-    document.getElementById("result").innerHTML = `
-        <h2>Thank You, ${escapeHTML(name)}! ❤️</h2>
-        <p>Your answers are precious to me.</p>
-        <p>Happiness: ${escapeHTML(happiness)}</p>
-        <p>Our Future: ${escapeHTML(future)}</p>
-        <p>Your Message: ${escapeHTML(message || "No message written")}</p>
-        <h2>Forever Together? 💍</h2>
-        <p>Thank you for sharing your feelings with me! 💖</p>
-    `;
-}
+    const button = document.querySelector("#questions button");
+    button.disabled = true;
+    button.textContent = "Sending... ❤️";
 
-function escapeHTML(value) {
-    return value.replace(/[&<>"']/g, function(char) {
-        return {
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#39;"
-        }[char];
-    });
+    try {
+        await fetch(WEB_APP_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify({
+                name,
+                happiness,
+                future,
+                message
+            })
+        });
+
+        document.getElementById("result").innerHTML =
+            "<h2>Thank You ❤️</h2><p>Your answers have been submitted!</p>";
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+        button.disabled = false;
+        button.textContent = "Send My Answers 💖";
+    }
 }
