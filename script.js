@@ -1,5 +1,4 @@
-const WEB_APP_URL =https://script.google.com/macros/s/AKfycbyZePZLw3m-ZjAftGGIgM5zlP3DZmZAo7TI_ELIk-b7LJbGLLedKuE3Yd97hWFXr15C/exec
-
+const WEB_APP_URL=https://script.google.com/macros/s/AKfycbyZePZLw3m-ZjAftGGIgM5zlP3DZmZAo7TI_ELIk-b7LJbGLLedKuE3Yd97hWFXr15C/exec
 function startLove() {
     document.getElementById("questions").classList.remove("hidden");
 
