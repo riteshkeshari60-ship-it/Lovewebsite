@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever With You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="hearts">❤️ 💗 💕 💖</div>
+
+    <div class="container">
+        <h1>Hey Beautiful! ❤️</h1>
+
+        <p class="subtitle">
+            I have something special for you...
+        </p>
+
+        <div class="heart">💝</div>
+
+        <h2>Will you be my forever?</h2>
+
+        <p>
+            Every moment with you is special.
+            I want to make many more memories with you.
+        </p>
+
+        <button onclick="startLove()">Open My Heart 💌</button>
+
+        <div id="questions" class="hidden">
+            <h2>A Little Love Quiz 💕</h2>
+
+            <label>What is your name?</label>
+            <input type="text" id="girlName" placeholder="Your beautiful name">
+
+            <label>What makes you happiest?</label>
+            <select id="happiness">
+                <option value="">Choose one</option>
+                <option>Spending time together ❤️</option>
+                <option>Talking for hours 📱</option>
+                <option>Small surprises 🎁</option>
+                <option>All of these 🥰</option>
+            </select>
+
+            <label>Would you like to build a beautiful future together?</label>
+            <select id="future">
+                <option value="">Choose your answer</option>
+                <option>Yes ❤️</option>
+                <option>Let's see together 🥰</option>
+            </select>
+
+            <label>Write something for me 💌</label>
+            <textarea id="message" placeholder="Write your heart here..."></textarea>
+
+            <button onclick="submitAnswers()">Send My Answers 💖</button>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
